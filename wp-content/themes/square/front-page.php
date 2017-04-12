@@ -50,6 +50,8 @@ get_header();
 		}
 	} ?>
 	</div>
+<?php echo do_shortcode("[R-slider id='6']"); ?>
+
 	<div class="sq-banner-shadow"><img src="<?php echo get_template_directory_uri() ?>/images/banner-shadow.png"></div>
 </section>
 
