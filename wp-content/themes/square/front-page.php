@@ -51,7 +51,8 @@ get_header();
 	} ?>
 	</div>
 <?php echo do_shortcode("[R-slider id='6']"); ?>
-<?php echo do_shortcode("[http://localhost/MtbWeb/galery/]"); ?>
+<?php echo do_shortcode("[huge_it_maps id='2']"); ?>
+<?php echo do_shortcode("[huge_it_maps id='5']"); ?>
 	<div class="sq-banner-shadow"><img src="<?php echo get_template_directory_uri() ?>/images/banner-shadow.png"></div>
 </section>
 
