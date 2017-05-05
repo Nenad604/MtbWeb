@@ -23,7 +23,10 @@ Square is a beautifully crafted WordPress theme with lots of exciting feature to
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
-= 1.3.4 - Mar 04 2016 =
+= 1.3.5 - April 25 2017 =
+* WooCommerce Gallery Compatibility issue fixed
+
+= 1.3.4 - Mar 04 2017 =
 * Documentation link Added
 * Minor Styling in Customizer Panel
 
