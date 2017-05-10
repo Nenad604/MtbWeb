@@ -30,6 +30,236 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         $count ++;
     }; ?>
     <script>
+        jQuery(window).load(function(){
+            jQuery('#reslide-right-click-protection').on('change', function () {
+                if(jQuery('#reslide-right-click-protection').val() === '1') {
+                    jQuery('#reslide_slider_preview').bind("contextmenu", function(e) {
+                        e.preventDefault();
+                    });
+
+                    jQuery(document).keydown(function(e){
+                        if(e.which === 123){
+                            return false;
+                        }
+                    });
+                } else {
+                    jQuery('#reslide_slider_preview').unbind("contextmenu");
+                }
+            });
+            
+            if(+jQuery('#reslide-right-click-protection').val()) {
+                jQuery('#reslide_slider_preview').bind("contextmenu", function(e) {
+                    e.preventDefault();
+                });
+
+                jQuery(document).keydown(function(e){
+                    if(e.which === 123){
+                        return false;
+                    }
+                });
+            }
+
+            if (document.getElementById("reslide_preview")) {
+                document.getElementById("reslide_preview").addEventListener("click", function (e) {
+                    var $frame_val = jQuery('#params-imageframes').val(),
+                        $filter_val = jQuery('#params-imagefilters').val();
+
+                    switch ($frame_val) {
+                        case '0':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-width': '0'
+                                });
+                            },0);
+                            break;
+                        case '1':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_1.png") 100 103 103 100 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                        case '7':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_7.png") 100 100 100 100 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                        case '8':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_8.png") 100 135 100 140 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                    }
+
+                    switch ($filter_val) {
+                        case '1':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'grayscale(1)',
+                                    'filter': 'grayscale(1)'
+                                });
+                            },0);
+                            break;
+                        case '2':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'sepia(1)',
+                                    'filter': 'sepia(1)'
+                                });
+                            },0);
+                            break;
+                        case '3':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'saturate(4)',
+                                    'filter': 'saturate(4)'
+                                });
+                            },0);
+                            break;
+                        case '4':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'hue-rotate(90deg)',
+                                    'filter': 'hue-rotate(90deg)'
+                                });
+                            },0);
+                            break;
+                        case '5':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'invert(.8)',
+                                    'filter': 'invert(.8)'
+                                });
+                            },0);
+                            break;
+                        case '6':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'opacity(.5)',
+                                    'filter': 'opacity(.5)'
+                                });
+                            },0);
+                            break;
+                        case '7':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'brightness(.5)',
+                                    'filter': 'brightness(.5)'
+                                });
+                            },0);
+                            break;
+                        case '8':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(3)',
+                                    'filter': 'contrast(3)'
+                                });
+                            },0);
+                            break;
+                        case '9':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'blur(1px)',
+                                    'filter': 'blur(1px)'
+                                });
+                            },0);
+                            break;
+                        case '10':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'sepia(1) hue-rotate(200deg)',
+                                    'filter': 'sepia(1) hue-rotate(200deg)'
+                                });
+                            },0);
+                            break;
+                        case '11':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(1.4) saturate(1.8) sepia(.6)',
+                                    'filter': 'contrast(1.4) saturate(1.8) sepia(.6)'
+                                });
+                            },0);
+                            break;
+                        case '12':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'grayscale(1) brightness(0.45) contrast(1.05)',
+                                    'filter': 'grayscale(1) brightness(0.45) contrast(1.05)'
+                                });
+                            },0);
+                            break;
+                        case '13':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(110%) brightness(110%) contrast(130%)',
+                                    'filter': 'contrast(110%) brightness(110%) contrast(130%)'
+                                });
+                            },0);
+                            break;
+                        case '14':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg)',
+                                    'filter': 'contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg)'
+                                });
+                            },0);
+                            break;
+                        case '15':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg)',
+                                    'filter': 'contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg)'
+                                });
+                            },0);
+                            break;
+                        case '16':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(150%) brightness(100%) contrast(110%)',
+                                    'filter': 'contrast(150%) brightness(100%) contrast(110%)'
+                                });
+                            },0);
+                            break;
+                        case '17':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(85%) brightness(110%) contrast(75%) sepia(22%)',
+                                    'filter': 'contrast(85%) brightness(110%) contrast(75%) sepia(22%)'
+                                });
+                            },0);
+                            break;
+                        case '18':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg)',
+                                    'filter': 'contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg)'
+                                });
+                            },0);
+                            break;
+                        case '19':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(100%) contrast(100%) sepia(30%)',
+                                    'filter': 'contrast(100%) brightness(100%) contrast(100%) sepia(30%)'
+                                });
+                            },0);
+                            break;
+                    }
+                });
+            }
+            
+        });
+        
         const FRONT_IMAGES = '<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>';
         const _IMAGES = '<?php echo RESLIDE_PLUGIN_PATH_IMAGES;?>';
 
@@ -78,13 +308,13 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             <div class="add_slide_container_video">
                 <a id="add_video">
                     <p id="reslide_insert_video_input"><?php _e( 'Add Video', 'reslide' ); ?></p>
-                    <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
+                    <span class="video-pro reslide-free" style="color:red;"><?php _e('(PRO)&nbsp;','reslide');?></span>
                 </a>
             </div>
             <div class="add_slide_container_video">
                 <a id="add_video">
                     <p id="reslide_insert_video_input"><?php _e( 'Add Post', 'reslide' ); ?></p>
-                    <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
+                    <span class="video-pro reslide-free" style="color:red;"><?php _e('(PRO)&nbsp;','reslide');?></span>
                 </a>
             </div>
             <div class="reslide_slider_images_list_wrapper">
@@ -127,17 +357,17 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <div class="reslideitem-properties">
                                             <b><a href="#" class="quick_edit"
                                                   data-slide-id="<?php echo $rows->id; ?>"><i
-                                                        class="fa fa-pencil-square-o" aria-hidden="true"></i><span>Quick Edit</span></a></b>
+                                                        class="fa fa-pencil-square-o" aria-hidden="true"></i><span><?php _e('Quick Edit','reslide');?></span></a></b>
                                             </a>
                                             <b><a href="#" class="reslide_remove_image"
                                                   data-slide-id="<?php echo $rows->id; ?>"><i class="fa fa-remove"
-                                                                                              aria-hidden="true"></i><span>Remove</span></a></b>
+                                                                                              aria-hidden="true"></i><span><?php _e('Remove','reslide');?></span></a></b>
                                             <b><label href="#" class="reslide_on_off_image"><input
                                                         data-slide-id="<?php echo $rows->id; ?>"
                                                         class="slide-checkbox" <?php if ( $rows->published == 1 ) {
                                                         echo 'checked  value="1"';
                                                     } else echo 'value="0"' ?>
-                                                        type="checkbox"/><span>Public</span></label></b>
+                                                        type="checkbox"/><span><?php _e('Public','reslide');?></span></label></b>
                                         </div>
                                         <form class="reslide-nodisplay">
                                             <input type="text" class="reslideitem-edit-title"
@@ -158,15 +388,15 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         }
                     } ?>
                 </ul>
-                <button id="save_slider">Save Slide Changes</button>
+                <button id="save_slider"><?php _e('Save Slide Changes','reslide');?></button>
             </div>
         </div>
         <div id="reslide_slider_edit">
             <div class="header">
                 <div><h3><?php echo wp_unslash($_slider[0]->title); ?></h3></div>
                 <div class="slider-preview-options">
-                    <a id="reslide_preview" href="#">Preview</a>
-                    <a class="reslide_save_all" href="#">Save</a>
+                    <a id="reslide_preview" href="#"><?php _e('Preview','reslide');?></a>
+                    <a class="reslide_save_all" href="#"><?php _e('Save','reslide');?></a>
                 </div>
             </div>
             <div class="settings">
@@ -186,21 +416,21 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                     <ul class="main-content">
                         <li class="general active">
                             <ul id="general-settings">
-                                <li class="style"><label for="reslide-name">Name:</label><input id="reslider-name"
+                                <li class="style"><label for="reslide-name"><?php _e('Name:','reslide');?></label><input id="reslider-name"
                                                                                                 name="cs[name]" type="text"
                                                                                                 value="<?php echo stripslashes_deep($_slider[0]->title); ?>"/>
                                 </li>
-                                <li class="style"><label for="reslide-width">Width(px):</label><input id="reslide-width"
+                                <li class="style"><label for="reslide-width"><?php _e('Width(px):','reslide');?></label><input id="reslide-width"
                                                                                                       name="style[width]"
                                                                                                       type="number"
                                                                                                       value="<?php echo esc_attr($style->width); ?>"/>
                                 </li>
-                                <li class="style"><label for="reslide-height">Height(px):</label><input id="reslide-height"
+                                <li class="style"><label for="reslide-height"><?php _e('Height(px):','reslide');?></label><input id="reslide-height"
                                                                                                         name="style[height]"
                                                                                                         type="number"
                                                                                                         value="<?php echo esc_attr($style->height); ?>"/>
                                 </li>
-                                <li style="display:none;" class="margin style"><label>Margin(px):</label>
+                                <li style="display:none;" class="margin style"><label><?php _e('Margin(px):','reslide');?></label>
                                     <div>
                                         <input id="reslide-margin-left" type="number" name="style[marginLeft]"
                                                value="<?php echo esc_attr($style->marginLeft); ?>"/>
@@ -234,87 +464,87 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <label for="reslide-effect-type"><?php _e('Slider Effect', 'reslide'); ?>:</label>
                                     <select id="reslide-effect-type">
                                         <option
-                                            value="0" <?php echo ( $params->effect->type == 0 ) ? "selected" : ""; ?>>
+                                            value="0" <?php echo ( esc_attr($params->effect->type) == 0 ) ? "selected" : ""; ?>>
                                             <?php _e('Fade','reslide');?>
                                         </option>
                                         <option
-                                            value="1" <?php echo ( $params->effect->type == 1 ) ? "selected" : ""; ?>>
+                                            value="1" <?php echo ( esc_attr($params->effect->type) == 1 ) ? "selected" : ""; ?>>
                                             <?php _e('Rotate','reslide');?>
                                         </option>
                                         <option
-                                            value="2" <?php echo ( $params->effect->type == 2 ) ? "selected" : ""; ?>>
+                                            value="2" <?php echo ( esc_attr($params->effect->type) == 2 ) ? "selected" : ""; ?>>
                                             <?php _e('Switch','reslide');?>
                                         </option>
                                         <option
-                                            value="3" <?php echo ( $params->effect->type == 3 ) ? "selected" : ""; ?>>
+                                            value="3" <?php echo ( esc_attr($params->effect->type) == 3 ) ? "selected" : ""; ?>>
                                             <?php _e('Doors','reslide');?>
                                         </option>
                                         <option
-                                            value="4" <?php echo ( $params->effect->type == 4 ) ? "selected" : ""; ?>>
+                                            value="4" <?php echo ( esc_attr($params->effect->type) == 4 ) ? "selected" : ""; ?>>
                                             <?php _e('Rotate Axis down','reslide');?>
                                         </option>
                                         <option
-                                            value="5" <?php echo ( $params->effect->type == 5 ) ? "selected" : ""; ?>>
+                                            value="5" <?php echo ( esc_attr($params->effect->type) == 5 ) ? "selected" : ""; ?>>
                                             <?php _e('Jump in square','reslide');?>
                                         </option>
                                         <option
-                                            value="6" <?php echo ( $params->effect->type == 6 ) ? "selected" : ""; ?>>
+                                            value="6" <?php echo ( esc_attr($params->effect->type) == 6 ) ? "selected" : ""; ?>>
                                             <?php _e('Collapse stairs','reslide');?>
                                         </option> 
                                         <option
-                                            value="7" <?php echo ( $params->effect->type == 7 ) ? "selected" : ""; ?>>
+                                            value="7" <?php echo ( esc_attr($params->effect->type) == 7 ) ? "selected" : ""; ?>>
                                             <?php _e('Slide Left','reslide');?>
                                         </option> 
                                         <option
-                                            value="8" <?php echo ( $params->effect->type == 8 ) ? "selected" : ""; ?>>
+                                            value="8" <?php echo ( esc_attr($params->effect->type) == 8 ) ? "selected" : ""; ?>>
                                             <?php _e('Slide Right','reslide');?>
                                         </option>
                                         <option
-                                            value="9" <?php echo ( $params->effect->type == 9 ) ? "selected" : ""; ?>>
+                                            value="9" <?php echo ( esc_attr($params->effect->type) == 9 ) ? "selected" : ""; ?>>
                                             <?php _e('Slide Up','reslide');?>
                                         </option>
                                         <option
-                                            value="10" <?php echo ( $params->effect->type == 10 ) ? "selected" : ""; ?>>
+                                            value="10" <?php echo ( esc_attr($params->effect->type) == 10 ) ? "selected" : ""; ?>>
                                             <?php _e('Slide Down','reslide');?>
                                         </option>
                                         <option
-                                            value="11" <?php echo ( $params->effect->type == 11 ) ? "selected" : ""; ?>>
+                                            value="11" <?php echo ( esc_attr($params->effect->type) == 11 ) ? "selected" : ""; ?>>
                                             <?php _e('Rotate VDouble in','reslide');?>
                                         </option>
                                         <option
-                                            value="12" <?php echo ( $params->effect->type == 12 ) ? "selected" : ""; ?>>
+                                            value="12" <?php echo ( esc_attr($params->effect->type) == 12 ) ? "selected" : ""; ?>>
                                             <?php _e('Rotate HDouble in','reslide');?>
                                         </option>
                                         <option
-                                            value="13" <?php echo ( $params->effect->type == 13 ) ? "selected" : ""; ?>>
+                                            value="13" <?php echo ( esc_attr($params->effect->type) == 13 ) ? "selected" : ""; ?>>
                                             <?php _e('Zoom in','reslide');?>
                                         </option>
                                         <option
-                                            value="14" <?php echo ( $params->effect->type == 14 ) ? "selected" : ""; ?>>
+                                            value="14" <?php echo ( esc_attr($params->effect->type) == 14 ) ? "selected" : ""; ?>>
                                             <?php _e('Fade in Corners','reslide');?>
                                         </option>
                                         <option
-                                            value="15" <?php echo ( $params->effect->type == 15 ) ? "selected" : ""; ?>>
+                                            value="15" <?php echo ( esc_attr($params->effect->type) == 15 ) ? "selected" : ""; ?>>
                                             <?php _e('Fade Clip out','reslide');?>
                                         </option>
                                         <option
-                                            value="16" <?php echo ( $params->effect->type == 16 ) ? "selected" : ""; ?>>
+                                            value="16" <?php echo ( esc_attr($params->effect->type) == 16 ) ? "selected" : ""; ?>>
                                             <?php _e('Fade Clip out V','reslide');?>
                                         </option>
                                         <option
-                                            value="17" <?php echo ( $params->effect->type == 17 ) ? "selected" : ""; ?>>
+                                            value="17" <?php echo ( esc_attr($params->effect->type) == 17 ) ? "selected" : ""; ?>>
                                             <?php _e('Horizontal Chess Stripe','reslide');?>
                                         </option>
                                         <option
-                                            value="18" <?php echo ( $params->effect->type == 18 ) ? "selected" : ""; ?>>
+                                            value="18" <?php echo ( esc_attr($params->effect->type) == 18 ) ? "selected" : ""; ?>>
                                             <?php _e('Vertical Chess Stripe','reslide');?>
                                         </option>
                                         <option
-                                            value="19" <?php echo ( $params->effect->type == 19 ) ? "selected" : ""; ?>>
+                                            value="19" <?php echo ( esc_attr($params->effect->type) == 19 ) ? "selected" : ""; ?>>
                                             <?php _e('Horizontal Fade Stripe','reslide');?>
                                         </option>
                                         <option
-                                            value="20" <?php echo ( $params->effect->type == 20 ) ? "selected" : ""; ?>>
+                                            value="20" <?php echo ( esc_attr($params->effect->type) == 20 ) ? "selected" : ""; ?>>
                                             <?php _e('Vertical Fade Stripe','reslide');?>
                                         </option>
                                     </select>
@@ -325,15 +555,15 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <label for="reslide-behavior" name="params[behavior]"><?php _e('Image Behavior', 'reslide'); ?>:</label>
                                     <select id="reslide-behavior">
                                         <option
-                                            value="0" <?php echo ( $params->behavior == 0 ) ? "selected" : ""; ?>>
+                                            value="0" <?php echo ( esc_attr($params->behavior) == 0 ) ? "selected" : ""; ?>>
                                             Stretch
                                         </option>
                                         <option
-                                            value="1" <?php echo ( $params->behavior == 1 ) ? "selected" : ""; ?>>
+                                            value="1" <?php echo ( esc_attr($params->behavior) == 1 ) ? "selected" : ""; ?>>
                                             Fit
                                         </option>
                                         <option
-                                            value="2" <?php echo ( $params->behavior == 2 ) ? "selected" : ""; ?>>
+                                            value="2" <?php echo ( esc_attr($params->behavior) == 2 ) ? "selected" : ""; ?>>
                                             Fill
                                         </option>
                                     </select>
@@ -370,7 +600,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                            value="<?php echo esc_attr($params->title->style->left); ?>">
                                 </li>
                                 <li class="params description">
-                                    <label for="reslide-description-show">Description:</label><input id="reslide-description-show"
+                                    <label for="reslide-description-show"><?php _e('Description:','reslide');?></label><input id="reslide-description-show"
                                                                                                      type="checkbox"
                                                                                                      name="params[description][show]"
                                                                                                      value="<?php echo esc_attr($params->description->show); ?>" <?php if ( $params->description->show ) {
@@ -382,18 +612,18 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                 </li>
                                 <li class="params custom">
-                                    <label for="reslide-custom">Slider Custom Element:</label>
+                                    <label for="reslide-custom"><?php _e('Slider Custom Element:','reslide');?></label>
                                     <select id="reslide-custom">
                                         <option
-                                            value="text" <?php echo ( $params->custom->type == 'text' ) ? "selected" : ""; ?>>
+                                            value="text" <?php echo ( esc_attr($params->custom->type) == 'text' ) ? "selected" : ""; ?>>
                                             Text
                                         </option>
                                         <option
-                                            value="button" <?php echo ( $params->custom->type == 'button' ) ? "selected" : ""; ?>>
+                                            value="button" <?php echo ( esc_attr($params->custom->type) == 'button' ) ? "selected" : ""; ?>>
                                             Button
                                         </option>
                                         <option
-                                            value="image" <?php echo ( $params->custom->type == 'image' ) ? "selected" : ""; ?>>
+                                            value="image" <?php echo ( esc_attr($params->custom->type) == 'image' ) ? "selected" : ""; ?>>
                                             Image
                                         </option>
                                     </select>
@@ -402,7 +632,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <div id="reslide-custom-stylings" class="reslide_styling"><?php _e('Style','reslide');?> <i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                                     <div id="reslide-custom-add" class="reslide_drawelement free"
-                                         rel="reslide_<?php echo $params->custom->type; ?>"
+                                         rel="reslide_<?php echo esc_attr($params->custom->type); ?>"
                                          data="<?php echo esc_attr($params->custom->type); ?>" style="display:inline-block;"><?php _e('Add','reslide');?>
                                     </div>
                                     <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
@@ -411,15 +641,15 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <label for="reslide-sortimagesby" name="params[sortimagesby]"><?php _e('Sort Images By', 'reslide'); ?>:</label>
                                     <select id="reslide-sortimagesby">
                                         <option
-                                            value="0" <?php echo ( $params->sortimagesby == 0 ) ? "selected" : ""; ?>>
+                                            value="0" <?php echo ( esc_attr($params->sortimagesby) == 0 ) ? "selected" : ""; ?>>
                                             <?php _e('None','reslide');?>
                                         </option>
                                         <option
-                                            value="1" <?php echo ( $params->sortimagesby == 1 ) ? "selected" : ""; ?>>
+                                            value="1" <?php echo ( esc_attr($params->sortimagesby) == 1 ) ? "selected" : ""; ?>>
                                             <?php _e('Name','reslide');?>
                                         </option>
                                         <option
-                                            value="2" <?php echo ( $params->sortimagesby == 2 ) ? "selected" : ""; ?>>
+                                            value="2" <?php echo ( esc_attr($params->sortimagesby) == 2 ) ? "selected" : ""; ?>>
                                             <?php _e('Random','reslide');?>
                                         </option>
                                     </select>
@@ -427,15 +657,17 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                            value="<?php echo esc_attr($params->sortimagesby); ?>">
                                 </li>
                             </ul>
-                            <div id="general-view">
-                                <div id="reslide-slider-construct">
+                            <div id="general-view" style="height: <?php echo esc_attr($style->height) + 250; ?>px;">
+                                <div class="ruler">
+                                    <span class="ruler_text"></span>
+                                    <div id="reslide-slider-construct">
                                     <div id="reslide-construct-vertical"></div>
                                     <div id="reslide-construct-horizontal"></div>
                                     <div id="reslide-title-construct" data="title" class="reslide_construct">
-                                        <div style="margin-left:5px;color:#565855">Title</div>
+                                        <div style="margin-left:5px;color:#565855"><?php _e('Title','reslide');?></div>
                                     </div>
                                     <div id="reslide-description-construct" data="description" class="reslide_construct">
-                                        <div style="margin-left:5px;color:#565855">Description</div>
+                                        <div style="margin-left:5px;color:#565855"><?php _e('Description','reslide');?></div>
                                     </div>
                                     <?php
                                     $button                   = - 1;
@@ -496,6 +728,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </div>
                                     <a id="reslide_remove" title="Remove Element"><i class="fa fa-remove"
                                                                                      aria-hidden="true"></i></a>
+                                </div>
                                 </div>
                         </li>
                         <li class="styling">
@@ -615,7 +848,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-image-filters0"
                                                    name="params[imagefilters]" rel="0"
-                                                   value='0' <?php if ( $params->imagefilters == '0' ) {
+                                                   value='0' <?php if ( esc_attr($params->imagefilters) == '0' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-image-filters0"><img title="No Filter"
@@ -624,7 +857,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-image-filters1"
                                                    name="params[imagefilters]" rel="1"
-                                                   value='1' <?php if ( $params->imagefilters == '1' ) {
+                                                   value='1' <?php if ( esc_attr($params->imagefilters) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-image-filters1"><img title="Grayscale"
@@ -633,7 +866,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-image-filters2"
                                                    name="params[imagefilters]" rel="2"
-                                                   value='2' <?php if ( $params->imagefilters == '2' ) {
+                                                   value='2' <?php if ( esc_attr($params->imagefilters) == '2' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-image-filters2"><img title="Sepia"
@@ -642,7 +875,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-image-filters3"
                                                    name="params[imagefilters]" rel="3"
-                                                   value='3' <?php if ( $params->imagefilters == '3' ) {
+                                                   value='3' <?php if ( esc_attr($params->imagefilters) == '3' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-image-filters3"><img title="Saturation"
@@ -651,7 +884,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-image-filters4"
                                                    name="params[imagefilters]" rel="4"
-                                                   value='4' <?php if ( $params->imagefilters == '4' ) {
+                                                   value='4' <?php if ( esc_attr($params->imagefilters) == '4' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-image-filters4"><img title="Hue-rotate"
@@ -733,7 +966,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                                                      src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
 										</span>
                                         <input type="hidden" id="params-imagefilters" name="params[imagefilters]"
-                                               value="<?php echo $params->imagefilters; ?>">
+                                               value="<?php echo esc_attr($params->imagefilters); ?>">
 
                                     </form>
                                 </li>
@@ -742,41 +975,41 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="arrows">
                             <ul id="arrow-settings">
                                 <li class="params">
-                                    <label for="reslide-arrows-show">Show Arrows:</label>
+                                    <label for="reslide-arrows-show"><?php _e('Show Arrows:','reslide');?></label>
                                     <form id="reslide-arrows-show">
                                         <div>
                                             <label>Always:</label><input type="radio" id="ui" name="params[arrows][show]"
-                                                   value="2" <?php if ( $params->arrows->show == '2' ) {
+                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '2' ) {
                                                 echo "checked";
                                             } ?> >
                                         </div>
                                         <div>
                                             <label>On Hover:</label><input type="radio" name="params[arrows][show]"
-                                                   value="1" <?php if ( $params->arrows->show == '1' ) {
+                                                   value="1" <?php if ( esc_attr($params->arrows->show) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
-                                            <label>Never:</label><input type="radio" name="params[arrows][show]" value="0" <?php if ( $params->arrows->show == '0' ) { echo "checked"; } ?>>
+                                            <label>Never:</label><input type="radio" name="params[arrows][show]" value="0" <?php if ( esc_attr($params->arrows->show) == '0' ) { echo "checked"; } ?>>
                                         </div>
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-arrows-background">Arrows' styles:&nbsp;<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-arrows-background"><?php _e('Arrows styles:&nbsp;','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-arrows-background">
                                         <span>
                                             <input type="radio" id="params-arrows-background1"
                                                    name="params[arrows][style][background][free]" rel="1"
-                                                   value='{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}' <?php if ( $params->arrows->type == '1' ) {
+                                                   value='{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}' <?php if ( esc_attr($params->arrows->type) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-arrows-background1"><img
                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-1.png'; ?>"></label><br>
 										</span>
 										<input type="hidden" id="params-arrows-type" name="params[arrows][type]"
-                                               value="<?php echo $params->arrows->type; ?>">
+                                               value="<?php echo esc_attr($params->arrows->type); ?>">
                                         <div id="arrows-info">
-                                            <p>In the lite version of the plugin you can use the default arrow for slider, yet the Pro version offers more arrows.</p>
+                                            <p><?php _e('In the lite version of the plugin you can use the default arrow for slider, yet the Pro version offers more arrows.','reslide');?></p>
                                         </div>
                                         <img id="arrows_info_img" src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows_style.png'; ?>" />
                                     </form>
@@ -786,46 +1019,53 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="thumbnails">
                             <ul id="thumbnail-settings">
                                 <li class="params">
-                                    <label for="reslide-thumbnails-show">Show thumbnails:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-thumbnails-show"><?php _e('Show thumbnails:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-thumbnails-show">
                                         <div>
-                                            <label>Always:</label>
+                                            <label><?php _e('Always:','reslide');?></label>
                                             <input type="radio" name="params[thumbnails][show]"
-                                                   value="0" <?php if ( $params->thumbnails->show == '2' ) {
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->show) == '2' ) {
                                                 echo "checked";
                                             } ?> >
                                         </div>
                                         <div>
-                                            <label>Hover:</label>
+                                            <label><?php _e('Hover:','reslide');?></label>
                                             <input type="radio" name="params[thumbnails][show]"
-                                                   value="0" <?php if ( $params->thumbnails->show == '1' ) {
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->show) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
-                                            <label>Never:</label>
+                                            <label><?php _e('Never:','reslide');?></label>
                                             <input type="radio" name="params[thumbnails][show]"
-                                                   value="0" <?php if ( $params->thumbnails->show == '0' ) {
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->show) == '0' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-thumbnails-positioning">Positioning:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span>
+                                    <label for="reslide-thumbnails-positioning"><?php _e('Positioning:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span>
                                     </label>
                                     <form id="reslide-thumbnails-positioning">
                                         <div>
-                                            <label>Default:</label>
+                                            <label><?php _e('Default:','reslide');?></label>
                                             <input type="radio" name="params[thumbnails][positioning]"
-                                                   value="0" <?php if ( $params->thumbnails->positioning == '0' ) {
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->positioning) == '0' ) {
                                                 echo "checked";
                                             } ?> >
                                         </div>
                                         <div>
-                                            <label>Show all:</label>
+                                            <label><?php _e('Show all:','reslide');?></label>
                                             <input type="radio" name="params[thumbnails][positioning]"
-                                                   value="0" <?php if ( $params->thumbnails->positioning == '1' ) {
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->positioning) == '1' ) {
+                                                echo "checked";
+                                            } ?>>
+                                        </div>
+                                        <div>
+                                            <label><?php _e('Customize:','reslide');?></label>
+                                            <input type="radio" name="params[thumbnails][positioning]"
+                                                   value="0" <?php if ( esc_attr($params->thumbnails->positioning) == '2' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
@@ -836,77 +1076,77 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="bullets">
                             <ul id="bullet-settings">
                                 <li class="params">
-                                    <label for="reslide-bullets-show">Show bullets:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-bullets-show"><?php _e('Show bullets:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-show">
                                         <div>
-                                            <label>Always:</label>
+                                            <label><?php _e('Always:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( $params->arrows->show == '2' ) {
+                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '2' ) {
                                                 echo "checked";
                                             } ?> >
                                         </div>
                                         <div>
-                                            <label>Hover:</label>
+                                            <label><?php _e('Hover:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( $params->arrows->show == '1' ) {
+                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
-                                            <label>Never:</label>
+                                            <label><?php _e('Never:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( $params->arrows->show == '0' ) {
+                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '0' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-position"> Position:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-bullets-position"> <?php _e('Position:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-position">
                                         <input type="radio" id="params-bullets-position0"
                                                name="params[bullets][style][position][free]" rel="0"
-                                               value='{"top": "16px","left": "10px"}' <?php if ( $params->bullets->position == '0' ) {
+                                               value='{"top": "16px","left": "10px"}' <?php if ( esc_attr($params->bullets->position) == '0' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position1"
                                                name="params[bullets][style][position][free]" rel="1"
-                                               value='{"top": "16px"}' <?php if ( $params->bullets->position == '1' ) {
+                                               value='{"top": "16px"}' <?php if ( esc_attr($params->bullets->position) == '1' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position2"
                                                name="params[bullets][style][position][free]" rel="2"
-                                               value='{"top": "16px","right": "10px"}' <?php if ( $params->bullets->position == '2' ) {
+                                               value='{"top": "16px","right": "10px"}' <?php if ( esc_attr($params->bullets->position) == '2' ) {
                                             echo "checked";
                                         } ?>><br>
                                         <input type="radio" id="params-bullets-position3"
                                                name="params[bullets][style][position][free]" rel="3"
-                                               value='{"left": "10px"}' <?php if ( $params->bullets->position == '3' ) {
+                                               value='{"left": "10px"}' <?php if ( esc_attr($params->bullets->position) == '3' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position4"
                                                name="params[bullets][style][position][free]" rel="4"
-                                               value='4' <?php if ( $params->bullets->position == '4' ) {
+                                               value='4' <?php if ( esc_attr($params->bullets->position) == '4' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position5"
                                                name="params[bullets][style][position][free]" rel="5"
-                                               value='{"right": "10px"}' <?php if ( $params->bullets->position == '5' ) {
+                                               value='{"right": "10px"}' <?php if ( esc_attr($params->bullets->position) == '5' ) {
                                             echo "checked";
                                         } ?>><br>
                                         <input type="radio" id="params-bullets-position6"
                                                name="params[bullets][style][position][free]" rel="6"
-                                               value='{"bottom": "16px","left": "10px"}' <?php if ( $params->bullets->position == '6' ) {
+                                               value='{"bottom": "16px","left": "10px"}' <?php if ( esc_attr($params->bullets->position) == '6' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position7"
                                                name="params[bullets][style][position][free]" rel="7"
-                                               value='7' <?php if ( $params->bullets->position == '7' ) {
+                                               value='7' <?php if ( esc_attr($params->bullets->position) == '7' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="radio" id="params-bullets-position8"
                                                name="params[bullets][style][position][free]" rel="8"
-                                               value='{"bottom": "16px","right": "10px"}' <?php if ( $params->bullets->position == '8' ) {
+                                               value='{"bottom": "16px","right": "10px"}' <?php if ( esc_attr($params->bullets->position) == '8' ) {
                                             echo "checked";
                                         } ?>>
                                         <input type="hidden" id="params-bullets-position"
@@ -915,43 +1155,43 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-background">Background:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-bullets-background"><?php _e('Background:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-background">
 										<span>
-										<label for="params-bullets-background-link">Color:</label>
+										<label for="params-bullets-background-link"><?php _e('Color:','reslide');?></label>
 										<input type="text" class="jscolor" id="params-bullets-background-link"
                                                name="params[bullets][style][background][color][link][free]" rel="0"
-                                               value="<?php echo $params->bullets->style->background->color->link; ?>">
+                                               value="<?php echo esc_attr($params->bullets->style->background->color->link); ?>">
 										</span>
                                         <span>
-										<label for="params-bullets-background-hover">Hover:</label>
+										<label for="params-bullets-background-hover"><?php _e('Hover:','reslide');?></label>
 										<input type="text" class="jscolor" id="params-bullets-background-hover"
                                                name="params[bullets][style][background][color][hover][free]" rel="0"
-                                               value="<?php echo $params->bullets->style->background->color->hover; ?>">
+                                               value="<?php echo esc_attr($params->bullets->style->background->color->hover); ?>">
 										</span>
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-orientation">Orientation:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-bullets-orientation"><?php _e('Orientation:','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-orientation">
                                         <div>
-                                            <label for="params-bullets-orientation-horizontal">Horizontal:</label>
+                                            <label for="params-bullets-orientation-horizontal"><?php _e('Horizontal:','reslide');?></label>
                                             <input type="radio" id="params-bullets-orientation-horizontal"
                                                    name="params[bullets][orientation][free]" rel="0"
-                                                   value='1' <?php if ( $params->bullets->orientation == '1' ) {
+                                                   value='1' <?php if ( esc_attr($params->bullets->orientation) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
-                                            <label for="params-bullets-orientation-vertical">Vertical:</label>
+                                            <label for="params-bullets-orientation-vertical"><?php _e('Vertical:','reslide');?></label>
                                             <input type="radio" id="params-bullets-orientation-vertical"
                                                    name="params[bullets][orientation][free]" rel="1"
-                                                   value='2' <?php if ( $params->bullets->orientation == '2' ) {
+                                                   value='2' <?php if ( esc_attr($params->bullets->orientation) == '2' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
-                                            <label for="params-bullets-orientation-row">Rows:</label>
+                                            <label for="params-bullets-orientation-row"><?php _e('Rows:','reslide');?></label>
                                             <input type="number" id="params-bullets-orientation-row"
                                                    name="params[bullets][rows][free]" rel="2"
                                                    value='<?php echo esc_attr($params->bullets->rows); ?>'>
@@ -959,15 +1199,15 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-space">Inline Space(px):<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
+                                    <label for="reslide-bullets-space"><?php _e('Inline Space(px):','reslide');?><span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-space">
                                         <div>
-                                            <label for="params-bullets-space-x">Horizontal:</label>
+                                            <label for="params-bullets-space-x"><?php _e('Horizontal:','reslide');?></label>
                                             <input type="number" id="params-bullets-space-x" name="params[bullets][s_x][free]"
                                                    rel="0" size="5" value='<?php echo esc_attr($params->bullets->s_x); ?>'>
                                         </div>
                                         <div>
-                                            <label for="params-bullets-space-y">Vertical:</label>
+                                            <label for="params-bullets-space-y"><?php _e('Vertical:','reslide');?></label>
                                             <input type="number" id="params-bullets-space-y" name="params[bullets][s_y][free]"
                                                    rel="0" size="5" value='<?php echo esc_attr($params->bullets->s_y); ?>'>
                                         </div>
@@ -982,42 +1222,42 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <ul id="reslide-sharing-show">
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][facebook]" value="<?php echo esc_attr($params->sharing->show->facebook); ?>"
-                                                <?php if ( $params->sharing->show->facebook == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->facebook) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e( 'Facebook', 'reslide' ); ?></label>
                                         </li>
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][twitter]" value="<?php echo esc_attr($params->sharing->show->twitter); ?>"
-                                                <?php if ( $params->sharing->show->twitter == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->twitter) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e('Twitter','reslide');?></label>
                                         </li>
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][googleplus]" value="<?php echo esc_attr($params->sharing->show->googleplus); ?>"
-                                                <?php if ( $params->sharing->show->googleplus == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->googleplus) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e('Google Plus','reslide');?></label>
                                         </li>
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][pinterest]" value="<?php echo esc_attr($params->sharing->show->pinterest); ?>"
-                                                <?php if ( $params->sharing->show->pinterest == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->pinterest) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e('Pinterest','reslide');?></label>
                                         </li>
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][linkedin]" value="<?php echo esc_attr($params->sharing->show->linkedin); ?>"
-                                                <?php if ( $params->sharing->show->linkedin == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->linkedin) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e('Linkedin','reslide');?></label>
                                         </li>
                                         <li class='social_media'>
                                             <input id="ui" type="checkbox" name="params[sharing][show][tumblr]" value="<?php echo esc_attr($params->sharing->show->tumblr); ?>"
-                                                <?php if ( $params->sharing->show->tumblr == '1' ) {
+                                                <?php if ( esc_attr($params->sharing->show->tumblr) == '1' ) {
                                                     echo "checked";
                                                 } ?>>
                                             <label><?php _e('Tumblr','reslide');?></label>
@@ -1030,7 +1270,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <span>
                                             <input type="radio" id="params-sharing-background0"
                                                    name="params[sharing][type]" rel="0"
-                                                   value='0' <?php if ( $params->sharing->type == '0' ) {
+                                                   value='0' <?php if ( esc_attr($params->sharing->type) == '0' ) {
                                                 echo "checked";
                                             } ?>>
                                             <label for="params-sharing-background0"><img
@@ -1057,7 +1297,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-5.png'; ?>"></label>
 										</span>
                                         <input type="hidden" id="params-sharing-type" name="params[sharing][type]"
-                                               value="<?php echo $params->sharing->type; ?>">
+                                               value="<?php echo esc_attr($params->sharing->type); ?>">
 
                                     </form>
                                 </li>
@@ -1153,15 +1393,14 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="shortcodes">
                             <div class="shortcode">
                                 <div class="header">
-                                    <h3>Shortcode Usage</h3>
+                                    <h3><?php _e('Shortcode Usage','reslide');?></h3>
                                 </div>
                                 <div class="usual usage">
-                                    Copy & paste the shortcode directly into any WordPress post or page.
+                                    <?php _e('Copy & paste the shortcode directly into any WordPress post or page.','reslide');?>
                                     <span>[R-slider id="<?php echo $_slider[0]->id; ?>"]</span>
                                 </div>
                                 <div class="php usage">
-                                    Copy & paste this code into a template file to include the slideshow within your
-                                    theme.
+                                    <?php _e('Copy & paste this code into a template file to include the slideshow within your theme.','reslide');?>
                                     <span>&lt;?php echo do_shortcode("[R-slider id='<?php echo $_slider[0]->id; ?>']"); ?&gt;</span>
                                 </div>
                             </div>
@@ -1262,14 +1501,13 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                 background-position: <?php echo esc_attr($params->arrows->style->background->right);?>;
             }
 
-            /*** title ***/
-            .reslidetitle {
+            .reslidetitle, .reslidedescription {
                 box-sizing: border-box;
                 padding: 1%;
                 overflow: hidden;
             }
 
-            .reslidetitle h3 {
+            .reslidetitle h3, .reslidedescription h3 {
                 margin: 0;
                 padding: 0;
                 word-wrap: break-word;
@@ -1295,44 +1533,44 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             <input type="hidden" class="left" name="params[title][style][left]" rel="0"
                    value="<?php echo esc_attr($params->title->style->left); ?>">
             <span class="color">
-		<label for="params-title-background-color-link">Color:</label>
+		<label for="params-title-background-color-link"><?php _e('Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-bullets-background-color-link"
                name="params[title][style][background][color]" rel="#"
                value="<?php echo esc_attr($params->title->style->background->color); ?>">
 		</span>
             <span class="color">
-		<label for="params-title-background-color-hover">Hover Color:</label>
+		<label for="params-title-background-color-hover"><?php _e('Hover Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-bullets-background-color-hover"
                name="params[title][style][background][hover]" rel="#"
                value="<?php echo esc_attr($params->title->style->background->hover); ?>">
 		</span>
             <span class="size">
-		<label for="params-title-background-opacity">Opacity(%):</label>
+		<label for="params-title-background-opacity"><?php _e('Opacity(%):','reslide');?></label>
 		<input type="number" id="params-title-background-opacity" name="params[title][style][opacity]" rel="0"
                value="<?php echo esc_attr($params->title->style->opacity); ?>">
 		</span>
             <span class="size">
-		<label for="params-title-border-size">Border:</label>
+		<label for="params-title-border-size"><?php _e('Border:','reslide');?></label>
 		<input type="number" id="params-title-border-width" name="params[title][style][border][width]" rel="px"
                value="<?php echo esc_attr($params->title->style->border->width); ?>">
 		</span>
             <span class="color">
-		<label for="params-title-border-color">Border Color:</label>
+		<label for="params-title-border-color"><?php _e('Border Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-title-border-color" name="params[title][style][border][color]"
                rel="#" value="<?php echo esc_attr($params->title->style->border->color); ?>">
 		</span>
             <span class="size">
-		<label for="params-title-background-radius">Border Radius:</label>
+		<label for="params-title-background-radius"><?php _e('Border Radius:','reslide');?></label>
 		<input type="number" id="params-title-border-radius" name="params[title][style][border][radius]" rel="px"
                value="<?php echo esc_attr($params->title->style->border->radius); ?>">
 		</span>
             <span class="size">
-		<label for="params-title-font-size">Font Size:</label>
+		<label for="params-title-font-size"><?php _e('Font Size:','reslide');?></label>
 		<input type="number" id="params-title-font-size" name="params[title][style][font][size]" rel="px"
                value="<?php echo esc_attr($params->title->style->font->size); ?>">
 		</span>
             <span class="color">
-		<label for="params-title-font-color">Font Color:</label>
+		<label for="params-title-font-color"><?php _e('Font Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-title-font-color" name="params[title][style][color]" rel="#"
                value="<?php echo esc_attr($params->title->style->color); ?>">
 		</span>
@@ -1358,45 +1596,45 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             <input type="hidden" class="left" name="params[description][style][left]" rel="0"
                    value="<?php echo esc_attr($params->description->style->left); ?>">
             <span class="color">
-		<label for="params-description-background-color-link">Color:</label>
+		<label for="params-description-background-color-link"><?php _e('Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-bullets-background-color-link"
                name="params[description][style][background][color]" rel="#"
                value="<?php echo esc_attr($params->description->style->background->color); ?>">
 		</span>
             <span class="color">
-		<label for="params-description-background-color-hover">Hover Color:</label>
+		<label for="params-description-background-color-hover"><?php _e('Hover Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-bullets-background-color-hover"
                name="params[description][style][background][hover]" rel="#"
                value="<?php echo esc_attr($params->description->style->background->hover); ?>">
 		</span>
             <span class="size">
-		<label for="params-description-background-opacity">Opacity(%):</label>
+		<label for="params-description-background-opacity"><?php _e('Opacity(%):','reslide');?></label>
 		<input type="number" id="params-description-background-opacity" name="params[description][style][opacity]"
                rel="0" value="<?php echo esc_attr($params->description->style->opacity); ?>">
 		</span>
             <span class="size">
-		<label for="params-description-border-size">Border:</label>
+		<label for="params-description-border-size"><?php _e('Border:','reslide');?></label>
 		<input type="number" id="params-description-border-width" name="params[description][style][border][width]"
                rel="px" value="<?php echo esc_attr($params->description->style->border->width); ?>">
 		</span>
             <span class="color">
-		<label for="params-description-border-color">Border Color:</label>
+		<label for="params-description-border-color"><?php _e('Border Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-description-border-color"
                name="params[description][style][border][color]" rel="#"
                value="<?php echo esc_attr($params->description->style->border->color); ?>">
 		</span>
             <span class="size">
-		<label for="params-description-background-radius">Border Radius:</label>
+		<label for="params-description-background-radius"><?php _e('Border Radius:','reslide');?></label>
 		<input type="number" id="params-description-border-radius" name="params[description][style][border][radius]"
                rel="px" value="<?php echo esc_attr($params->description->style->border->radius); ?>">
 		</span>
             <span class="size">
-		<label for="params-description-font-size">Font Size:</label>
+		<label for="params-description-font-size"><?php _e('Font Size:','reslide');?></label>
 		<input type="number" id="params-description-font-size" name="params[description][style][font][size]" rel="px"
                value="<?php echo esc_attr($params->description->style->font->size); ?>">
 		</span>
             <span class="color">
-		<label for="params-description-font-color">Font Color:</label>
+		<label for="params-description-font-color"><?php _e('Font Color:','reslide');?></label>
 		<input type="text" class="jscolor" id="params-description-font-color" name="params[description][style][color]"
                rel="#" value="<?php echo esc_attr($params->description->style->color); ?>">
 		</span>
@@ -1453,49 +1691,49 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                     <input type="hidden" name="custom[<?php echo $custom->type . $custom->id; ?>][style][font]" rel="0"
                            value="{}">
                     <span class=" color">
-				<label for="custom-background-color-link">Background Color:</label>
+				<label for="custom-background-color-link"><?php _e('Background Color:','reslide');?></label>
 				<input type="text" class="jscolor" id="custom-bullets-background-color-link"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][background][color]" rel="#"
                        value="<?php echo esc_attr($custom->style->background->color); ?>">
 				</span class="border-width">
                     <span class=" color">
-				<label for="custom-background-color-hover">Hover Color:</label>
+				<label for="custom-background-color-hover"><?php _e('Hover Color:','reslide');?></label>
 				<input type="text" class="jscolor" id="custom-bullets-background-color-hover"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][background][hover]" rel="#"
                        value="<?php echo esc_attr($custom->style->background->hover); ?>">
 				</span>
                     <span class=" color">
-				<label for="custom-background-opacity">Opacity(%):</label>
+				<label for="custom-background-opacity"><?php _e('Opacity(%):','reslide');?></label>
 				<input type="number" id="custom-background-opacity"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][opacity]" rel="0"
                        value="<?php echo esc_attr($custom->style->opacity); ?>">
 				</span>
                     <span class=" size">
-				<label for="custom-border-size">Border:</label>
+				<label for="custom-border-size"><?php _e('Border:','reslide');?></label>
 				<input type="number" id="custom-border-width"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][width]" rel="px"
                        value="<?php echo esc_attr($custom->style->border->width); ?>">
 				</span>
                     <span class="color">
-				<label for="custom-border-color">Border Color:</label>
+				<label for="custom-border-color"><?php _e('Border Color:','reslide');?></label>
 				<input type="text" class="jscolor" id="custom-custom-border-color"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][color]" rel="#"
                        value="<?php echo esc_attr($custom->style->border->color); ?>">
 				</span>
                     <span class=" size">
-				<label for="custom-background-radius">Border Radius:</label>
+				<label for="custom-background-radius"><?php _e('Border Radius:','reslide');?></label>
 				<input type="number" id="custom-custom-border-radius"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][radius]" rel="px"
                        value="<?php echo esc_attr($custom->style->border->radius); ?>">
 				</span>
                     <span class="size">
-				<label for="custom-font-size">Font Size:</label>
+				<label for="custom-font-size"><?php _e('Font Size:','reslide');?></label>
 				<input type="number" id="custom-font-size"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][font][size]" rel="px"
                        value="<?php echo esc_attr($custom->style->font->size); ?>">
 				</span>
                     <span class="color">
-				<label for="custom-font-color">Font Color:</label>
+				<label for="custom-font-color"><?php _e('Font Color:','reslide');?></label>
 				<input type="text" class="jscolor" id="custom-font-color"
                        name="custom[<?php echo $custom->type . $custom->id; ?>][style][color]" rel="#"
                        value="<?php echo esc_attr($custom->style->color); ?>">
@@ -1554,25 +1792,25 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                            name="custom[<?php echo $custom->type . $custom->id; ?>][style][left]" rel="0"
                            value="<?php echo esc_attr($custom->style->left); ?>">
                     <span class=" color">
-			<label for="custom-background-opacity">Opacity(%):</label>
+			<label for="custom-background-opacity"><?php _e('Opacity(%):','reslide');?></label>
 			<input type="number" id="custom-background-opacity"
                    name="custom[<?php echo $custom->type . $custom->id; ?>][style][opacity]" rel="0"
                    value="<?php echo esc_attr($custom->style->opacity); ?>">
 			</span>
                     <span class="border-width size">
-			<label for="custom-custom-border-size">Border:</label>
+			<label for="custom-custom-border-size"><?php _e('Border:','reslide');?></label>
 			<input type="number" id="custom-custom-border-width"
                    name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][width]" rel="px"
                    value="<?php echo esc_attr($custom->style->border->width); ?>">
 			</span>
                     <span class="border-color color">
-			<label for="custom-custom-border-color">Border Color:</label>
+			<label for="custom-custom-border-color"><?php _e('Border Color:','reslide');?></label>
 			<input type="text" class="jscolor" id="custom-custom-border-color"
                    name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][color]" rel="#"
                    value="<?php echo esc_attr($custom->style->border->color); ?>">
 			</span>
                     <span class="border-radius size">
-			<label for="custom-custom-background-radius">Border Radius:</label>
+			<label for="custom-custom-background-radius"><?php _e('Border Radius:','reslide');?></label>
 			<input type="number" id="custom-custom-border-radius"
                    name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][radius]" rel="px"
                    value="<?php echo esc_attr($custom->style->border->radius); ?>">
@@ -1611,13 +1849,14 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             opacity: 1;
             top: 10%;
             left: 5%;
-            z-index: 10000;
+            z-index: 999999999;
             box-sizing: border-box;
         }
 
         /*** title styling***/
 
         #reslide_slider_title_styling .reslide_content .reslide_title {
+            background-color: <?php echo sanitize_hex_color("#".$params->title->style->background->color);?>;
             border-width: <?php echo absint($params->title->style->border->width);?>px;
             border-color: <?php echo sanitize_hex_color("#".$params->title->style->border->color);?>;
             border-radius: <?php echo absint($params->title->style->border->radius);?>px;
@@ -1629,8 +1868,11 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             overflow: hidden;
         }
 
+        #reslide_slider_title_styling .reslide_content .reslide_title:hover {
+            background-color: <?php echo sanitize_hex_color("#".$params->title->style->background->hover);?>;
+        }
+
         #reslide_slider_title_styling .reslide_content .reslide_title .reslide_title_child {
-            background: <?php echo sanitize_hex_color("#".$params->title->style->background->color);?>;
             opacity: <?php echo abs($params->title->style->opacity)/100;?>;
             filter: alpha(opacity=<?php echo abs($params->title->style->opacity);?>);
         }
@@ -1649,6 +1891,10 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             overflow: hidden;
         }
 
+        #reslide_slider_description_styling .reslide_content .reslide_description:hover {
+            background: <?php echo sanitize_hex_color("#".$params->description->style->background->hover);?>;
+        }
+        
         /*** title styling***/
         .reslide-custom-styling .reslide_content .reslide_custom .reslide_img {
             box-sizing: border-box;
@@ -1676,14 +1922,24 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             height: 100%;
         }
 
+        .ruler {
+            width: 100%;
+            height: <?php echo absint($style->height) + 50;?>px;
+            position: relative;
+            overflow: hidden;
+            top: 15px;
+            clear: both;
+        }
+        
         #reslide-slider-construct {
+            margin: 17px;
             width: <?php echo absint($style->width);?>px;
             height: <?php echo absint($style->height);?>px;
             position: relative;
             background-size: 100% 100%;
             background-repeat: no-repeat;
             overflow: hidden;
-            background: rgba(223, 223, 223, 0.36);
+            background: rgba(223, 223, 223, 0.56);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             box-sizing: border-box;
@@ -1920,6 +2176,137 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         #reslide-description-construct #reslide_remove {
             opacity: 0;
         }
+
+        div[id*=slider].reslide_slider_container_preview {
+        <?php
+            switch( (string)$params->imageframes ) {
+        case '1':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_1.png") 100 103 103 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '2':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_2.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '3':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_3.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '4':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_4.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '5':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_5.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '6':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_6.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '7':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_7.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '8':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_8.png") 100 135 100 140 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        }
+        ?>
+        }
+
+        .reslide_slider_preview .reslideitem img {
+        <?php
+            switch( (string)$params->imagefilters ) {
+            case '1':
+                echo '-webkit-filter: grayscale(1);
+                     filter: grayscale(1);';
+                break;
+            case '2':
+                echo '-webkit-filter: sepia(1);
+                     filter: sepia(1);';
+                break;
+            case '3':
+                echo '-webkit-filter: saturate(4);
+                        filter: saturate(4);';
+                break;
+            case '4':
+                echo '-webkit-filter: hue-rotate(90deg);
+                    filter: hue-rotate(90deg);';
+                break;
+            case '5':
+                echo '-webkit-filter: invert(.8);
+                    filter: invert(.8);';
+                break;
+            case '6':
+                echo '-webkit-filter: opacity(.5);
+                    filter: opacity(.5);';
+                break;
+            case '7':
+                echo '-webkit-filter: brightness(.5);
+                    filter: brightness(.5);';
+                break;
+            case '8':
+                echo '-webkit-filter: contrast(3);
+                    filter: contrast(3);';
+                break;
+            case '9':
+                echo '-webkit-filter: blur(1px);
+                    filter: blur(1px);';
+                break;
+            case '10':
+                echo '-webkit-filter: sepia(1) hue-rotate(200deg);
+                    filter: sepia(1) hue-rotate(200deg);';
+                break;
+            case '11':
+                echo '-webkit-filter: contrast(1.4) saturate(1.8) sepia(.6);
+                    filter: contrast(1.4) saturate(1.8) sepia(.6);';
+                break;
+            case '12':
+                echo '-webkit-filter: grayscale(1) brightness(0.45) contrast(1.05);
+                    filter: grayscale(1) brightness(0.45) contrast(1.05);';
+                break;
+            case '13':
+                echo '-webkit-filter: contrast(110%) brightness(110%) contrast(130%);
+                    filter: contrast(110%) brightness(110%) contrast(130%);';
+                break;
+            case '14':
+                echo '-webkit-filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);
+                    filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);';
+                break;
+            case '15':
+                echo '-webkit-filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);
+                    filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);';
+                break;
+            case '16':
+                echo '-webkit-filter: contrast(150%) brightness(100%) contrast(110%);
+                    filter: contrast(150%) brightness(100%) contrast(110%);';
+                break;
+            case '17':
+                echo '-webkit-filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);
+                    filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);';
+                break;
+            case '18':
+                echo '-webkit-filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);
+                    filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);';
+                break;
+            case '19':
+                echo '-webkit-filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);
+                     filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);';
+                break;
+        }
+        ?>
+        }
+
     </style>
     <?php
 }

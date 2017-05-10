@@ -72,206 +72,182 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 	}
 ?>
 </script>
-<div id="slider<?php echo $sliderID ;?>_container" jssor-slider="false" style="width: <?php echo  $style->width;?>px; height: <?php echo  $style->height;?>px;">
-    <div data-u="loading" class="reslide_loading">
-		<div></div>
-    </div>
-      <!-- Slides Container --> 
-        <div data-u="slides" class="reslide_slides">
-		<?php foreach($_reslides as $slide){ 
-					if($slide->published == 0) continue;
+		<div id="slider<?php echo $sliderID ;?>_container_">
+			<div class="frame_container_<?php echo $sliderID ;?>">
+				<div id="slider<?php echo $sliderID ;?>_container" jssor-slider="false" style="width: <?php echo  $style->width;?>px; height: <?php echo  $style->height;?>px;">
+		<div data-u="loading" class="reslide_loading">
+			<div></div>
+		</div>
+		  <!-- Slides Container -->
+			<div data-u="slides" class="reslide_slides">
+			<?php foreach($_reslides as $slide){
+						if($slide->published == 0) continue;
 
-				$customSlide = json_decode($slide->custom);
-			?>
-            <div class="slide<?php echo $sliderID ;?>_<?php echo $slide->id;?>">
-	            <?php if(!empty($slide->image_link)){ ?>
-		            <a href="<?php echo reslide_text_sanitize($slide->image_link);?>" <?php if($slide->image_link_new_tab){ echo 'target="_blank"'; }?>>
-			            <img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
-		            </a>
-	            <?php } else { ?>
-		            <img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
-	            <?php } ?>
-				<?php if($slide->title AND $params->title->show) {
+					$customSlide = json_decode($slide->custom);
 				?>
-					<div class="reslidetitle">
+				<div class="slide<?php echo $sliderID ;?>_<?php echo $slide->id;?>">
+					<?php if(!empty($slide->image_link)){ ?>
+						<a href="<?php echo reslide_text_sanitize($slide->image_link);?>" <?php if($slide->image_link_new_tab){ echo 'target="_blank"'; }?>>
+							<img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
+						</a>
+					<?php } else { ?>
+						<img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
+					<?php } ?>
+					<?php if($slide->title AND $params->title->show) {
+					?>
+						<div class="reslidetitle">
+							<div></div>
+							<span><?php echo reslide_text_sanitize($slide->title);?></span>
+						</div>
+					<?php } ?>
+					<?php if($slide->description  AND $params->description->show) {
+							?>
+
+					<div class="reslidedescription">
 						<div></div>
-						<span><?php echo reslide_text_sanitize($slide->title);?></span>
-					</div>	
-				<?php } ?>
-				<?php if($slide->description  AND $params->description->show) {
+						<span><?php echo reslide_text_sanitize($slide->description);?></span>
+					</div>
+					<?php } ?>
+
+				<?php
+
+			foreach($customSlide as $customSlide) {
+				switch($customSlide->type) {
+							case 'h3':
 						?>
-				
-				<div class="reslidedescription">
-					<div></div>
-					<span><?php echo reslide_text_sanitize($slide->description);?></span>
-				</div>		
-				<?php } ?>
-				
-			<?php 
-			
-		foreach($customSlide as $customSlide) {		
-			switch($customSlide->type) {
-						case 'h3':
-					?>
-					<h3 class="slide<?php echo $slide->id;?>h3<?php echo $customSlide->id;?>  reslideh3">
-						<span></span><span class="gg"><?php echo esc_html($customSlide->text);?></span>
-					</h3>
-					<?php 
-						break; 
-						case 'button':
-					?>
-					<button  class = "slide<?php echo $slide->id;?>button<?php echo $customSlide->id;?> reslidebutton reslide_any">
-						<div></div>
-						<a class="gg" href="<?php echo esc_url($customSlide->link);?>"><span><?php echo esc_html($customSlide->text); ?></span></a>
-					</button>
-					<?php 
-						break; 
-						case 'img':
-					?>
-					<div   class="slide<?php echo $slide->id; ?>img<?php echo $customSlide->id; ?> reslideimg reslide_any">
-						<img src="<?php echo esc_url($customSlide->src); ?>" alt="<?php echo esc_attr($customSlide->alt);?>">
-					</div>
-					
-					<?php break;default: ?>							
-			<?php }
-		}?>
+						<h3 class="slide<?php echo $slide->id;?>h3<?php echo $customSlide->id;?>  reslideh3">
+							<span></span><span class="gg"><?php echo esc_html($customSlide->text);?></span>
+						</h3>
+						<?php
+							break;
+							case 'button':
+						?>
+						<button  class = "slide<?php echo $slide->id;?>button<?php echo $customSlide->id;?> reslidebutton reslide_any">
+							<div></div>
+							<a class="gg" href="<?php echo esc_url($customSlide->link);?>"><span><?php echo esc_html($customSlide->text); ?></span></a>
+						</button>
+						<?php
+							break;
+							case 'img':
+						?>
+						<div   class="slide<?php echo $slide->id; ?>img<?php echo $customSlide->id; ?> reslideimg reslide_any">
+							<img src="<?php echo esc_url($customSlide->src); ?>" alt="<?php echo esc_attr($customSlide->alt);?>">
+						</div>
+
+						<?php break;default: ?>
+				<?php }
+			}?>
+				</div>
+			<?php }?>
 			</div>
-		<?php }?>	
-        </div>
-		<?php 
-		foreach($customs as $custom){ ?>
-			<?php switch($custom->type) {
-						case 'h3':
-					?>
-					<h3 data-u="any" class="reslideh3<?php echo $custom->id; ?> reslideh3 reslide_any">
-						<span></span>
-						<span class="gg"><?php echo esc_html($custom->text); ?></span>
-					</h3>
-					<?php 
-						break; 
-						case 'button':
-					?>
-					<button data-u="any"  class="reslidebutton<?php echo $custom->id;?> reslidebutton reslide_any">
-						<div></div>
-						<a class="gg" href="<?php echo esc_url($custom->link);?>"><span><?php echo esc_html($custom->text);?></span></a>
-					</button>
-					<?php 
-						break; 
-						case 'img':
-					?>
-					<div data-u="any" class="reslideimg<?php echo $custom->id;?> reslideimg reslide_any">
-						<img src="<?php echo esc_url($custom->src);?>" alt="<?php echo esc_attr($custom->alt);?>">
+			<?php
+			foreach($customs as $custom){ ?>
+				<?php switch($custom->type) {
+							case 'h3':
+						?>
+						<h3 data-u="any" class="reslideh3<?php echo $custom->id; ?> reslideh3 reslide_any">
+							<span></span>
+							<span class="gg"><?php echo esc_html($custom->text); ?></span>
+						</h3>
+						<?php
+							break;
+							case 'button':
+						?>
+						<button data-u="any"  class="reslidebutton<?php echo $custom->id;?> reslidebutton reslide_any">
+							<div></div>
+							<a class="gg" href="<?php echo esc_url($custom->link);?>"><span><?php echo esc_html($custom->text);?></span></a>
+						</button>
+						<?php
+							break;
+							case 'img':
+						?>
+						<div data-u="any" class="reslideimg<?php echo $custom->id;?> reslideimg reslide_any">
+							<img src="<?php echo esc_url($custom->src);?>" alt="<?php echo esc_attr($custom->alt);?>">
+						</div>
+
+						<?php break;default: ?>
+				<?php }?>
+			<?php }?>
+			<!--#region Bullet Navigator Skin Begin -->
+
+
+			<!-- bullet navigator container -->
+			<div data-u="navigator" class=" reslide_navigator" style="bottom: 16px; right: 10px;">
+				<!-- bullet navigator item prototype -->
+				<div data-u="prototype" class="reslide_dot"></div>
+			</div>
+			<!--#endregion Bullet Navigator Skin End -->
+			<!-- Arrow Left -->
+			<span data-u="arrowleft" class=" reslide_arrow_left" style="top: 123px; left: 8px;">
+			</span>
+			<!-- Arrow Right -->
+			<span data-u="arrowright" class=" reslide_arrow_right" style="top: 123px; right: 8px;">
+			</span>
+			<!-- Trigger -->
+				<div data-u="thumbnavigator" class="reslide-thumbnail<?php echo $sliderID;?>" style="right: 0px; bottom: 0px;">
+					<!-- Thumbnail Item Skin Begin -->
+					<div data-u="slides" style=" bottom: 25px; right: 30px;cursor: default;">
+						<div data-u="prototype" class="p">
+							<div class=w><div data-u="thumbnailtemplate" class="t"></div></div>
+							<div class=c></div>
+						</div>
 					</div>
-					
-					<?php break;default: ?>							
-			<?php }?>			       
-		<?php }?>			       
-        <!--#region Bullet Navigator Skin Begin -->
-
-
-        <!-- bullet navigator container -->
-        <div data-u="navigator" class=" reslide_navigator" style="bottom: 16px; right: 10px;">
-            <!-- bullet navigator item prototype -->
-            <div data-u="prototype" class="reslide_dot"></div>
-        </div>
-        <!--#endregion Bullet Navigator Skin End -->
-        <!-- Arrow Left -->
-        <span data-u="arrowleft" class=" reslide_arrow_left" style="top: 123px; left: 8px;">
-        </span>
-        <!-- Arrow Right -->
-        <span data-u="arrowright" class=" reslide_arrow_right" style="top: 123px; right: 8px;">
-        </span>
-        <!-- Trigger --> 
-            <div data-u="thumbnavigator" class="reslide-thumbnail<?php echo $sliderID;?>" style="right: 0px; bottom: 0px;">
-                <!-- Thumbnail Item Skin Begin -->
-                <div data-u="slides" style=" bottom: 25px; right: 30px;cursor: default;">
-                    <div data-u="prototype" class="p">
-                        <div class=w><div data-u="thumbnailtemplate" class="t"></div></div>
-                        <div class=c></div>
-                    </div>
-                </div>
-                <!-- Thumbnail Item Skin End -->
-            </div>		
-	</div>
+					<!-- Thumbnail Item Skin End -->
+				</div>
+		</div>
+			</div>
+		</div>
+	
        	<?php require( RESLIDE_PLUGIN_PATH_FRONTEND.'/reslide-front-end.css.php' ) ?>
         <script>
 			jQuery(window).load(function(){
-				var $width_, $height_, $k_;
 
-				$width_ = <?php echo absint($style->width);?>;
-				$height_ = <?php echo absint($style->height);?>;
-				$k_ = $width_ / $height_;
-
-				if($width_ > jQuery('#slider<?php echo $sliderID;?>_container').width()){
-					$width_ = jQuery('#slider<?php echo $sliderID;?>_container').width();
-					$height_ = $width_ / $k_;
-					if(<?php echo (string)$params->imageframes; ?> != '0'){ console.log(1);
-						jQuery('#slider<?php echo $sliderID ;?>_container .reslidetitle').css({
-							maxWidth: $width_ + 56 + 'px'
-						});
-						jQuery('#slider<?php echo $sliderID ;?>_container .reslidedescription').css({
-							maxWidth: $width_ + 56 + 'px'
-						});
-					}
-				} else {
-					if(<?php echo (string)$params->imageframes; ?> != '0'){
-						jQuery('#slider<?php echo $sliderID;?>_container .reslidetitle').css({
-							maxWidth: $width_ - 120 + 'px'
-						});
-
-						jQuery('#slider<?php echo $sliderID;?>_container .reslidedescription').css({
-							maxWidth: $width_ - 120 + 'px'
-						});
-					}
+				if(jQuery('#slider<?php echo $sliderID;?>_container_').width() > jQuery('#slider<?php echo $sliderID;?>_container').width() + 120){
+					jQuery('#slider<?php echo $sliderID;?>_container_').width(jQuery('#slider<?php echo $sliderID;?>_container').width() + 120).height(jQuery('#slider<?php echo $sliderID;?>_container').height() + 120);
 				}
-
-				jQuery('#slider<?php echo $sliderID;?>_container').css({
-					width: $width_ + 'px',
-					height: $height_ + 'px'
-				});
 				
 				var shareButtons;
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
-					jQuery('<div class="socialIcons"></div>').insertAfter('#slider<?php echo $sliderID;?>_container');
+					jQuery('<div class="socialIcons<?php echo $sliderID;?>"></div>').insertAfter('#slider<?php echo $sliderID;?>_container_');
 
 					var type = reslider<?php echo $sliderID;?>["params"]["sharing"]["type"];
 
-					shareButtons = '<ul class="share-buttons style_' + type + '"></ul>';
-					jQuery('.socialIcons').append(shareButtons);
+					shareButtons = '<ul class="share-buttons<?php echo $sliderID;?> style_' + type + '"></ul>';
+					jQuery('.socialIcons<?php echo $sliderID;?>').append(shareButtons);
 				}
 
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Facebook" id="share-facebook" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Facebook" id="share-facebook" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Twitter" id="share-twitter" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Twitter" id="share-twitter" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-twitter').attr('href', 'https://twitter.com/intent/tweet?text=&url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-googleplus" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Pinterest" id="share-googleplus" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-googleplus').attr('href', 'https://plus.google.com/share?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-pinterest" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Pinterest" id="share-pinterest" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-pinterest').attr('href', 'http://www.pinterest.com/pin/create/button/?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Linkedin" id="share-linkedin" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Linkedin" id="share-linkedin" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Tumblr" id="share-tumblr" target="_blank"></a></li></ul>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Tumblr" id="share-tumblr" target="_blank"></a></li></ul>');
 					setTimeout(function(){
 						jQuery('#share-tumblr').attr('href', 'http://www.tumblr.com/share/link?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
@@ -517,14 +493,6 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 					$(window).bind("resize", ScaleSlider);
 					$(window).bind("orientationchange", ScaleSlider);
 
-					//responsive code end
-					jQuery('.reslide_arrow_left').off('click');
-					jQuery('.reslide_arrow_left').on('click',function(){
-						c_slider<?php echo $sliderID;?>.$NextPlay();
-					});
-					jQuery('.reslide_arrow_right').click(function(){
-						c_slider<?php echo $sliderID;?>.$PrevPlay();
-					});							
 		});
 			
 		if(+reslider<?php echo $sliderID;?>['params']['behavior'] === 0){

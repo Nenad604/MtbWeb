@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, slideshow,
 Requires at least: 3.0.1
-Tested up to: 4.7.3
-Stable tag: 2.4.3
+Tested up to: 4.7.4
+Stable tag: 2.4.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Responsive Slider - best free wordpress tool for slideshow. Use responsive slide
 * [Responsive Slider FAQ](https://huge-it.com/wordpress-responsive-slider-faq/)
 * [Responsive Slider User Manual](https://huge-it.com/wordpress-responsive-slider-user-manual/)
 * [Responsive Slider Support](https://huge-it.com/contact-us/)
-* [Responsive Slider Forum](https://huge-it.com/forums/forum/wordpress/wordpress-responsive-slider/)
+* [Responsive Slider Forum](https://wordpress.org/support/plugin/slider)
 * [Responsive Slider GitHub Project](https://github.com/Huge-IT/slider)
 
 Responsive Slider is a completely new and advanced way to represent your images in slides . Responsive Slider is the best way to promote your website by creating amazing sliders with beautiful transition effects. So be creative with Huge-IT team, use the WordPress Responsive Slider for making your website more competitive. 
@@ -86,7 +86,7 @@ Slider is fully responsive and mobile friendly. All your images will appear as b
 
 == Installation ==
 
-### How to install the Pro version of Responsive Slider plugin?
+#### How to install the Pro version of Responsive Slider plugin?
 
 There are two ways to install the Pro version of the plugin.
 
@@ -107,7 +107,6 @@ The second way to install the Pro version of Responsive using is via FTP
 * You will find the plugin installed on your WordPress toolbar in the back end of your website.
 
 
-If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Screenshots ==
 
@@ -150,12 +149,50 @@ Please try to submit the payment using another browser, otherwise feel free to c
 
 = May I add my own custom icons for the arrows? =
 
-Custom arrows can be added in the Professional version of the plugin only. 
+Custom arrows can be added in the Professional version of the plugin only.
+
+
+= My images in Slider look stretched, how can I make the images look perfectly? =
+
+Please try to change the slider image size form General Options. Moreover, the commercial version of Responsive Slider plugin provides Image Behaviour Option in General Options section which you may set Fit or Fill.
+
+
+= How many images can I add to the Slider Plugin? Is there any limitation for the Free version of Slider? =
+
+There is no limitation of adding images to the both (free and paid) versions of Responsive Slider Plugin. You can add unlimited number of images to the plugin and create as many slider as you desire.  
+
+
+= Does the Responsive Slider Provide Filter options to apply for the images =
+
+Slider plugin comes with huge variety of filter options which you can add to the plugin to make each slider look more attractive. 
+
+
+= Can I add Thumbnail images for the slider I create? =
+
+There is a Thumbnail options in the Slider plugin and by enabling it you can show thumbnail images for each slider. Moreover you may display thumbnail images when hovering on the slider images. 
+
+
+= I want to add watermark text on the slider images, is there such option in the plugin? =
+
+Commercial version of Slider plugin provides watermark effect which you can enable for the slider. You can add watermark text or even an image. 
+
+
+= May I share the slider on different social networks? =
+
+Responsive Slider has Social Sharing option which allows your website visitors to share the slider they want in social sharing services like Facebook,Twitter, Google+
+
+
+= Is there any additional styling options for the social sharing buttons in the slider plugin? =
+
+There are 6 share buttons style in the slider plugin and you can pick the one that perfectly suits to your website.
 
 
 If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.4.4 =
+* We have changed the structure of the admin panel to appear more user friendly on big monitors, now the navigation in the admin panel appears user friendly.
 
 = 2.4.3 =
 * 1) We have added post slider functionality, where users can showcase their posts in slider

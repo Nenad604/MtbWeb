@@ -5,9 +5,30 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 ?>
 <style>
+.frame_container_<?php echo $sliderID ;?> {
+<?php
+switch( $params->imageframes ) {
+case '1':
+    echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_1.png") 90 95 95 90 stretch stretch; 
+          border-style: inset;
+          border-width: 60px;';
+    break;
+case '7':
+    echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_7.png") 93 92 87 92 stretch stretch; 
+          border-style: inset;
+          border-width: 60px;';
+    break;
+case '8':
+    echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_8.png") 90 123 85 129 stretch stretch; 
+          border-style: inset;
+          border-width: 60px;';
+    break;
+}
+?>
+}
+
 #slider<?php echo $sliderID;?>_container {
     margin: 0 auto;
-    margin-bottom: 10px;
     position: relative;
     top: 0;
     left: 0;
@@ -15,12 +36,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     overflow:hidden;
 }
 
-.socialIcons {
+.socialIcons<?php echo $sliderID;?> {
     width: auto;
-    margin: 0 auto
+    margin: 20px 0;
 }
 
-.share-buttons{
+.share-buttons<?php echo $sliderID;?>{
     list-style-type:none;
     position:relative;
     top:5px;
@@ -28,20 +49,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     margin: 0 !important;
 }
 
-.share-buttons li,.share-buttons li a{
+.share-buttons<?php echo $sliderID;?> li,.share-buttons<?php echo $sliderID;?> li a{
     display:inline-block;
     width:35px;
     height:35px;
     margin-right:5px;
     outline: none;
     box-shadow: none !important;
+    border: none !important;
 }
 
-.share-buttons li,.share-buttons li a {
-    box-shadow: none !important;
-}
-
-a#share-facebook {
+.share-buttons<?php echo $sliderID;?> a#share-facebook {
     display: block;
     position: absolute;
     width: 35px;
@@ -51,9 +69,9 @@ a#share-facebook {
     background-position: 0 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
 }
-a#share-twitter {
+.share-buttons<?php echo $sliderID;?> a#share-twitter {
     display: block;
     position: absolute;
     width: 35px;
@@ -63,9 +81,9 @@ a#share-twitter {
     background-position: -35px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
 }
-a#share-googleplus {
+.share-buttons<?php echo $sliderID;?> a#share-googleplus {
     display: block;
     position: absolute;
     width: 35px;
@@ -75,9 +93,9 @@ a#share-googleplus {
     background-position: -67px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
 }
-a#share-pinterest {
+.share-buttons<?php echo $sliderID;?> a#share-pinterest {
     display: block;
     position: absolute;
     width: 35px;
@@ -87,9 +105,9 @@ a#share-pinterest {
     background-position: -99px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
 }
-a#share-linkedin {
+.share-buttons<?php echo $sliderID;?> a#share-linkedin {
     display: block;
     position: absolute;
     width: 35px;
@@ -99,9 +117,9 @@ a#share-linkedin {
     background-position: -131px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 9;
 }
-a#share-tumblr {
+.share-buttons<?php echo $sliderID;?> a#share-tumblr {
     display: block;
     position: absolute;
     width: 35px;
@@ -111,29 +129,7 @@ a#share-tumblr {
     background-position: -164px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
-}
-
-#slider<?php echo $sliderID;?>_container .reslide_slides img[class*=image] {
-<?php
-switch( $params->imageframes ) {
-    case '1':
-        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_1.png") 90 95 95 90 stretch stretch; 
-              border-style: inset;
-              border-width: 60px;';
-        break;
-    case '7':
-        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_7.png") 93 92 87 92 stretch stretch; 
-              border-style: inset;
-              border-width: 60px;';
-        break;
-    case '8':
-        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_8.png") 90 123 85 129 stretch stretch; 
-              border-style: inset;
-              border-width: 60px;';
-        break;
-}
-?>
+    z-index: 9;
 }
 
 #slider<?php echo $sliderID;?>_container .reslide_slides img {
@@ -208,28 +204,17 @@ switch( $params->imageframes ) {
 
 
 #slider<?php echo $sliderID ;?>_container .reslidetitle {
-    width: <?php echo absint($title->style->width); ?>px;
-    height: <?php echo absint($title->style->height); ?>px;
+    max-width: <?php echo absint($title->style->width); ?>px;
+    max-height: <?php echo absint($title->style->height); ?>px;
+    width: 100%;
+    height: 100%;
+    top: <?php echo esc_html($title->style->top); ?>;
+    left: <?php echo esc_html($title->style->left); ?>;
     border: <?php echo absint($title->style->border->width); ?>px solid #<?php echo sanitize_text_field($title->style->border->color); ?>;
     border-radius: <?php echo intval($title->style->border->radius); ?>px;
     background: <?php list($r,$g,$b) = array_map('hexdec',str_split($title->style->background->color,2));
                     $titleopacity = abs($title->style->opacity) / 100;
                     echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')'; ?>;
-<?php
- if((string)$params->imageframes == '0'){
-     echo 'top:'.esc_html($title->style->top).';';
-     echo 'left:'.esc_html($title->style->left).';';
- } else {
-     if(absint($title->style->top) < 60){
-         echo 'top: 60px;';
-     } else {
-         echo 'top:'.esc_html($title->style->top).';';
-     }
-     if(absint($title->style->left) < 60){
-         echo 'left: 60px;';
-     }
- }
-?>
 }
 #slider<?php echo $sliderID ;?>_container .reslidetitle > div {
     filter: alpha(opacity=<?php echo abs($title->style->opacity); ?>);
@@ -244,25 +229,14 @@ switch( $params->imageframes ) {
 /*Description styles ***/
 
 #slider<?php echo $sliderID ;?>_container .reslidedescription {
-    width: <?php echo absint($description->style->width); ?>px;
-    height: <?php echo absint($description->style->height); ?>px;
+    max-width: <?php echo absint($description->style->width); ?>px;
+    max-height: <?php echo absint($description->style->height); ?>px;
+    width: 100%;
+    height: 100%;
+    top: <?php echo esc_html($description->style->top); ?>;
+    left: <?php echo esc_html($description->style->left); ?>;
     border: <?php echo absint($description->style->border->width); ?>px solid <?php echo sanitize_hex_color("#".$description->style->border->color); ?>;
     border-radius: <?php echo absint($description->style->border->radius); ?>px;
-<?php
-    if((string)$params->imageframes == '0'){
-        echo 'top:'.esc_html($description->style->top).';';
-        echo 'left:'.esc_html($description->style->left).';';
-    } else {
-        if(absint($description->style->top) < 60){
-            echo 'top: 60px;';
-        } else {
-            echo 'top:'.esc_html($description->style->top).';';
-        }
-        if(absint($description->style->left) < 60){
-            echo 'left: 60px;';
-        }
-    }
-?>
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > div {
     background: <?php echo esc_html("#".$description->style->background->color); ?>;
@@ -379,8 +353,8 @@ foreach($_reslides as $slide){
                 display: block;
                 position: absolute;
                 text-align: center;
-                top: 0px;
-                left: 0px;
+                top: 0;
+                left: 0;
                 text-decoration: none;
             }
             #slider<?php echo $sliderID ;?>_container  .slide<?php echo $sliderID ;?>_<?php echo $slide->id;?> 	.slide<?php echo $slide->id;?>button<?php echo $customSlide->id;?> .gg span {
@@ -440,13 +414,15 @@ foreach($_reslides as $slide){
             case 'h3':
         ?>
 #slider<?php echo $sliderID ;?>_container	.reslideh3<?php echo $custom->id;?> {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     z-index: 2;
     position: absolute;
     background: none;
-    width: <?php echo absint($custom->style->width);?>px;
-    height: <?php echo absint($custom->style->height);?>px;
+    max-width: <?php echo absint($custom->style->width);?>px;
+    max-height: <?php echo absint($custom->style->height);?>px;
+    width: 100%;
+    height: 100%;
     border: <?php echo absint($custom->style->border->width);?>px solid <?php echo sanitize_hex_color("#".$custom->style->border->color);?>;
     top: <?php echo esc_html($custom->style->top);?>;
     left: <?php echo esc_html($custom->style->left);?>;
@@ -491,10 +467,12 @@ foreach($_reslides as $slide){
     border: 2px solid rgb(0, 0, 36);
     top: 0;
     left: 0;
-    border-radius: 0px;
+    border-radius: 0;
     background: none;
-    width: <?php echo $custom->style->width;?>px;
-    height: <?php echo $custom->style->height;?>px;
+    max-width: <?php echo $custom->style->width;?>px;
+    max-height: <?php echo $custom->style->height;?>px;
+    width: 100%;
+    height: 100%;
     border: <?php echo absint($custom->style->border->width);?>px solid <?php echo sanitize_hex_color("#".$custom->style->border->color);?>;
     top: <?php echo esc_html($custom->style->top);?>;
     left: <?php echo esc_html($custom->style->left);?>;
@@ -506,8 +484,8 @@ foreach($_reslides as $slide){
     height: 100%;
     z-index: 2;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     opacity: <?php echo abs($custom->style->border->radius)/100;?>;
     filter: alpha(opacity=<?php echo abs($custom->style->opacity);?>);
     background: <?php echo sanitize_hex_color("#".$custom->style->background->color);?>;
@@ -553,8 +531,10 @@ foreach($_reslides as $slide){
     position: absolute;
     z-index: 1;
     overflow: hidden;
-    width: <?php echo absint($custom->style->width);?>px;
-    height: <?php echo absint($custom->style->height);?>px;
+    max-width: <?php echo absint($custom->style->width);?>px;
+    max-height: <?php echo absint($custom->style->height);?>px;
+    width: 100%;
+    height: 100%;
     border: <?php echo absint($custom->style->border->width);?>px solid <?php echo sanitize_hex_color("#".$custom->style->border->color);?>;
     top: <?php echo esc_html($custom->style->top);?>;
     left: <?php echo esc_html($custom->style->left);?>;
@@ -689,7 +669,7 @@ body #slider<?php echo $sliderID ;?>_container .reslide_navigator div:hover { ba
 }
 
 * html #slider<?php echo $sliderID ;?>_container .reslide-thumbnail<?php echo $sliderID;?> .w {
-    width /**/: 62px;
-    height /**/: 32px;
+    width: 62px;
+    height: 32px;
 }
 </style>
